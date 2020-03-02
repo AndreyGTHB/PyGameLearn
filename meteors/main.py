@@ -1,7 +1,7 @@
 import pygame
 import sys
-from settings import *
-from classes.game_objects import *
+from meteors.settings import *
+from meteors.classes.game_objects import *
 
 
 # game initialization
@@ -13,18 +13,23 @@ clock = pygame.time.Clock()
 
 
 # game objects
-background = Background("recources/background.png")
-player = Player("recources/player.png")
+background = Background(BACKGROUND_IMG)
+player = Player(PLAYER_IMG)
 
+# groups
+all_objects = pygame.sprite.Group()
+
+all_objects.add(background)
+all_objects.add(player)
+all_objects.add(Bullet(BULLET_IMG, player.rect.midtop))
 
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit(0)
 
-    player.update()
-    screen.blit(background.image, background.rect)
-    screen.blit(player.image, player.rect)
+    all_objects.update()
+    all_objects.draw(screen)
 
     pygame.display.flip()
     clock.tick(30)

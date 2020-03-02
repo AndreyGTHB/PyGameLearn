@@ -1,12 +1,27 @@
 import pygame
-from settings import *
+from meteors.settings import *
+
+
+class Bullet(pygame.sprite.Sprite):
+    def __init__(self, image_path: str, player_pos):
+        super(Bullet, self).__init__()
+
+        self.speed = -15
+
+        self.image = pygame.image.load(image_path)
+        self.rect = self.image.get_rect()
+
+        self.rect.midbottom = player_pos
+
+    def update(self):
+        self.rect.move_ip(0, self.speed)
 
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, image_path: str):
         super(Player, self).__init__()
 
-        self.max_speed = 5
+        self.max_speed = 7
 
         self.image = pygame.image.load(image_path)
         self.rect = self.image.get_rect()
@@ -37,3 +52,8 @@ class Background(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
 
         self.rect.bottom = SCREEN_HEIGHT
+
+    def update(self):
+        self.rect.move_ip(0, 5)
+        if self.rect.bottom >= self.rect.height:
+            self.rect.bottom = SCREEN_HEIGHT
