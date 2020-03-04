@@ -113,3 +113,12 @@ class Meteorite(pygame.sprite.Sprite):
                 meteorites.remove(meteorite)
 
 
+class TextObject(pygame.sprite.Sprite):
+    def __init__(self, text, size, colour=BLACK, font=None, smoothing=False):
+        self.font = pygame.font.SysFont(font, size)
+        self.text = self.font.render(text, smoothing, colour)
+
+    def draw(self, screen, pos):
+        screen.blit(self.text, pos)
+
+

@@ -1,6 +1,5 @@
 SCREEN_SIZE = (SCREEN_WIDTH, SCREEN_HEIGHT) = (640, 480)
 
-WHITE = (255, 255, 255)
 
 BACKGROUND_IMG = "recources/background.png"
 PLAYER_IMG = "recources/player.png"
@@ -17,3 +16,9 @@ METEORITES_IMGS = [
     "recources/meteor9.png",
     "recources/meteor10.png",
 ]
+
+
+# colours
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+RED = (255, 0, 0)
